@@ -9,63 +9,61 @@ body {
   font-family: "Helvetica Neue", sans-serif;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-  min-height: 100vh;
-  background: #111;
-  padding: 10px;
+  align-items: center;
+  height: 100vh;
+  background: #111; /* dark background */
 }
 
 .calculator {
-  width: 100%;
-  max-width: 563px;
+  background: black;
+  border-radius: 20px; /* less rounded on full screen */
+  color: white;
+  width: 90vw;       /* take most of the viewport width */
+  max-width: 600px;  /* optional max-width for large screens */
+  height: 95vh;      /* almost full height */
+  padding: 2vh 2vw;
   display: flex;
   flex-direction: column;
-  color: white;
-  background: transparent;
-  padding: 2%;
 }
 
 .top-container {
   display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
-  padding: 0 2%;
-  flex: 0 0 auto;
+  justify-content: space-between;
+  padding: 0 1vw;
+  flex: 0 0 25%;   /* 25% of calculator height */
 }
 
 .value {
-  font-size: 12vw; /* scales with screen width */
+  font-size: 10vw;      /* scale with viewport width */
   font-weight: 300;
   text-align: right;
   line-height: 1.1;
   word-break: break-word;
-  max-height: 25vh; /* prevent overflow */
 }
 
 .buttons-container {
   display: grid;
+  grid-gap: 2vw;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(5, 1fr);
-  gap: 2%;
-  margin-top: 2%;
+  flex: 1;  /* fill remaining space */
+  padding: 1vw;
 }
 
 .button {
-  display: flex;
-  justify-content: center;
   align-items: center;
-  font-size: 5vw;        /* scales font with screen width */
   background: #333;
-  color: white;
   border-radius: 50%;
   cursor: pointer;
-  aspect-ratio: 1 / 1;   /* perfect circle */
-  width: 100%;
+  display: flex;
+  font-size: 5vw; /* scale font */
+  justify-content: center;
+  transition: filter 0.3s;
 }
 
 .button.function {
-  background: #a5a5a5;
   color: black;
+  background: #a5a5a5;
 }
 
 .button.operator {
@@ -75,5 +73,18 @@ body {
 .button.number-0 {
   grid-column: 1 / span 2;
   justify-content: flex-start;
-  padding-left: 15%;     /* scaled padding */
+  padding-left: 10%;  /* scaled padding */
+}
+
+.button:active,
+.button:focus {
+  filter: brightness(120%);
+}
+
+.bottom {
+  width: 15vw;
+  height: 0.8vh;
+  background: white;
+  border-radius: 4px;
+  margin: 1vh auto 0 auto;
 }
